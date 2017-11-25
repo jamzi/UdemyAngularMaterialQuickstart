@@ -1,18 +1,63 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatInputModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatListModule,
+  MatIconModule,
+  MatDialogModule
+} from "@angular/material";
+import { RouterModule, Routes } from "@angular/router";
 
+import { AppComponent } from "./app.component";
+import {
+  ContactsComponent,
+  AddContactDialog
+} from "./contacts/contacts.component";
+import { PopularComponent } from "./popular/popular.component";
+import { ContactsService } from "./contacts.service";
 
-import { AppComponent } from './app.component';
-
+const routes: Routes = [
+  {
+    path: "",
+    component: PopularComponent
+  },
+  {
+    path: "contacts",
+    component: ContactsComponent
+  },
+  {
+    path: "popular",
+    component: PopularComponent
+  }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContactsComponent,
+    PopularComponent,
+    AddContactDialog
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes),
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatIconModule,
+    MatDialogModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ContactsService],
+  bootstrap: [AppComponent],
+  entryComponents: [AddContactDialog]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,13 @@
+<mat-nav-list>
+  <a mat-list-item *ngFor="let contact of contacts">
+    <h4 mat-line>{{contact.name}}</h4>
+    <p mat-line> {{contact.number}} </p>
+    <button mat-icon-button (click)="delete(contact)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </a>
+</mat-nav-list>
+
+<button mat-mini-fab class="add-contact-fab" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
